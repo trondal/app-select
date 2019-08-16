@@ -739,8 +739,7 @@ const App: React.FC = () => {
       >
         Test
       </button>
-
-      <ExternalClear options={getOptions()} title={`External clear and add`} />
+      <ExternalClear options={getOptions()} />
     </div>
   );
 };
