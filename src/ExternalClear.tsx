@@ -36,7 +36,7 @@ function ExternalClear(props: any) {
         <button onClick={() => onChange([])}>&times; clear</button>
       </p>
       <p>
-        Values can be added from outside{" "}
+        Selected can be set{" "}
         <button onClick={() => onSet([options[1]])}>&raquo; set</button>
       </p>
       <Select
