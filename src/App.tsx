@@ -1,7 +1,6 @@
 import React from "react";
 import "./App.css";
-import Select from "react-dropdown-select";
-import ExternalClear from "./ExternalClear";
+import DropDownSelect from "./DropDownSelect";
 
 const data = [
   {
@@ -696,50 +695,33 @@ const data = [
   }
 ];
 
+export interface IOption {
+  value: any;
+  label: any;
+}
+
 const App: React.FC = () => {
-  const [values, setValues] = React.useState([
-    {
-      value: "",
-      label: ""
-    }
-  ]);
-
-  const onChange = (values: any) => {
-    console.log(values);
-  };
-
   const getOptions = () => {
     return data.map(function(entity) {
       return {
         value: entity.id,
-        label: entity.name
+        label: entity.name,
+        kilde: "foo"
       };
     });
   };
 
-  const test = () => {
-    const opt = getOptions()[6];
-    setValues([opt]);
+  const onSubmit = (username: string) => console.log(username);
+  const onChange = (values: IOption[]) => {
+    const value = values[0];
+    console.log(value);
   };
-
-  console.log(getOptions());
-
   return (
-    <div className="App">
-      <Select
-        multi={false}
-        values={values}
+    <div className="container">
+      <DropDownSelect
         options={getOptions()}
-        onChange={(values: any) => onChange(values)}
-      />
-      <button
-        onClick={() => {
-          test();
-        }}
-      >
-        Test
-      </button>
-      <ExternalClear options={getOptions()} />
+        onChange={onChange}
+      ></DropDownSelect>
     </div>
   );
 };
