@@ -1,6 +1,7 @@
 import React from "react";
 import "./App.css";
 import DropDownSelect from "./DropDownSelect";
+import { Formik, Field } from "formik";
 
 const data = [
   {
@@ -695,12 +696,27 @@ const data = [
   }
 ];
 
+export enum IStatus {
+  Aktiv = "Aktiv",
+  Inaktiv = "Inaktiv",
+  Slettet = "Slettet"
+}
+
+export type StatusType = "Aktiv" | "Inaktiv" | "Slettet";
+
 export interface IOption {
   value: any;
   label: any;
+  status: "Aktiv1" | "Inaktiv1" | "Slettet1";
 }
 
 const App: React.FC = () => {
+  const foo: IOption = {
+    value: "value",
+    label: "label",
+    status: "Aktiv1"
+  };
+
   const getOptions = () => {
     return data.map(function(entity) {
       return {
@@ -716,6 +732,7 @@ const App: React.FC = () => {
     const value = values[0];
     console.log(value);
   };
+
   return (
     <div className="container">
       <DropDownSelect
